@@ -1,0 +1,97 @@
+/* fritanga.co — clean, confident, a nod to Apple's iPod-era pages (~2005):
+   white-to-silver, bold Helvetica, a glossy reflection, aqua-blue accent.
+   No framework, no web fonts, no tracking. */
+
+:root {
+  --ink: #1d1d1f;     /* Apple near-black */
+  --gray: #6e6e73;    /* supporting text */
+  --muted: #86868b;   /* faint */
+  --accent: #0070c9;  /* aqua-era link blue */
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* subtle white -> silver, like the old apple.com */
+  background: linear-gradient(180deg, #ffffff 0%, #eef0f3 100%);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  padding: 9vh 24px;
+}
+
+main {
+  max-width: 38rem;
+  text-align: center;
+  animation: rise 1s ease both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Wordmark with the classic glossy reflection (degrades gracefully). */
+.mark {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0 0 2.6rem;
+  -webkit-box-reflect: below 1px
+    linear-gradient(transparent 60%, rgba(0, 0, 0, 0.18));
+}
+
+/* Big, confident headline. */
+.hero {
+  font-size: 2.7rem;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.08;
+  margin: 0 0 1.4rem;
+}
+.hero .accent { color: var(--accent); }
+
+.sub {
+  font-size: 1.2rem;
+  color: var(--gray);
+  margin: 0 auto 1.3rem;
+  max-width: 32rem;
+}
+
+.tag {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+.langs { margin-top: 0.9rem; color: var(--muted); }
+.langs a { color: var(--muted); }
+.langs a[aria-current="true"] { color: var(--ink); font-weight: 600; }
+.langs span { opacity: 0.5; margin: 0 0.45rem; }
+
+@media (max-width: 520px) {
+  .hero { font-size: 2rem; }
+  .sub { font-size: 1.08rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main { animation: none; }
+}
