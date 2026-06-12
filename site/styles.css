@@ -87,9 +87,82 @@ footer a:hover { text-decoration: underline; }
 .langs a[aria-current="true"] { color: var(--ink); font-weight: 600; }
 .langs span { opacity: 0.5; margin: 0 0.45rem; }
 
+/* Floating "first app" badge — the MIA Toolkit cat peeking from the corner.
+   The cat art is white-on-white, so a faint circular card gives it an edge.
+   A subtle backlink to mia-toolkit.fritanga.co. */
+.mia-badge {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
+  text-decoration: none;
+  animation: rise 1.2s 0.4s ease both;
+}
+.mia-bubble {
+  position: relative;
+  max-width: 11rem;
+  background: #fff;
+  color: var(--gray);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: right;
+  padding: 0.42rem 0.66rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+/* keep the product name on one line — never split or clip "MIA Toolkit" */
+.mia-bubble .nb { white-space: nowrap; }
+/* little tail, pointing down toward the cat */
+.mia-bubble::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transform: rotate(45deg);
+}
+.mia-cat {
+  width: 58px;
+  height: 58px;
+  padding: 5px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.mia-badge:hover .mia-cat {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+}
+.mia-badge:hover .mia-bubble { color: var(--ink); }
+
 @media (max-width: 520px) {
   .hero { font-size: 2rem; }
   .sub { font-size: 1.08rem; }
+
+  .mia-badge {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    gap: 0.4rem;
+  }
+  .mia-bubble { max-width: 9.5rem; font-size: 0.74rem; }
+  .mia-cat { width: 48px; height: 48px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mia-badge { animation: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
