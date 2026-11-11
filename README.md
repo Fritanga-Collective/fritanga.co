@@ -1,6 +1,6 @@
 # fritanga.co
 
-The landing page for **Fritanga** — a small collective that makes simple
+The landing page for **Fritanga** — a small collective building simple
 software for everyone.
 
 A single static page (vanilla HTML + one CSS file, no framework, no tracking),
